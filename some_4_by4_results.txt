@@ -1,0 +1,66 @@
+BEST CASE:
+
+R D D D
+D R D L
+D x D -
+R R R +
+
+NOT GOOD:
+
+D D D D
+R R D L
+R R D -
+R R R +
+
+d d d l
+r r d l
+r x d -
+
+latest[wall = -1000]:
+
+d d d d 
+r r d l
+d x d -
+r r r +
+
+[wall = -100]
+
+r r d l
+d r d l
+d x d -
+r r r + 
+
+[wall = -10]
+
+d r d d
+r r d l
+u x d -
+r r r +
+
+[wall = -50]
+
+d d d d
+d r d l
+d x d -
+r r r +
+
+r d d d
+r r d l
+d x d -
+r r r +
+
+r r d l
+r r d l
+d x d -
+r r r +
+
+r d d d
+d r d l
+d x d -
+r r r +
+
+
+
+
+
+

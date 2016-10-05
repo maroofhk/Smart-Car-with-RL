@@ -1,0 +1,154 @@
+q_learning_v4.ipynb
+-------------------
+1. changes primarily made to 'updateQMatrix'
+    a. it now accepts alpha and gamma constant values
+    b. we are using the q-learning Spellman equation to update q_matrix
+    c. for the above to happen we have to search the best action from the state we moved in: Q_max[S(t+1), a(t+1)]
+2. instead of 'start()' to look for one episode we have 'process_qMatrix(state)' that can start from any availabe state
+3. we also randomly choose the start start for above function. In addition, we iterate through the grids[state space]
+   400 times to get an idea of best path
+   
+Next steps:
+
+1. epsilon update in 'choose_action(...)' so that we choose a random action once in a while.
+   Note: Lets not choose a wall 
+2. we could use available actions on the walls. That will cause the program to ifnore it. Strategy similar to how
+   boundaries were defined in actionsAvailable
+   
+==================================================================================================================
+
+q_learning_v5_Working.ipynb [code ended: early 9/13/2016]
+---------------------------
+DO NOT CHANGE!!!
+
+Here is what this program has:
+1. basic 'choose_action' code with no exploration (use of epsilon)
+2. simple 4 by 4 case solved
+
+==================================================================================================================
+
+q_learning_v5_Working-Copy1.ipynb [code ended: late 9/13/2016]
+---------------------------
+DO NOT CHANGE!!!
+
+This has:
+1. base case is 7 by 7
+2. randomly generated walls
+3. have a new function 'makeMoveMatrix' that transforms q_matrix into 7 by 7 best action grid
+4. pickled that best scenario
+    a. q_matrix                       --> qMatrix_7by7_ver2.pkl
+    b. wall and pos/neg reward states --> posNegWallState_7by7_ver2.pkl
+    
+==================================================================================================================
+
+q_learning_v5_Working-Copy3.ipynb [code ended: 9/17/2016]
+---------------------------------
+DO NOT CHANGE!!!
+
+1. Biggest change was in function 'updateQMatrix' where for Q(S_t+1, A_t+1) I made sure that we do not 
+   go into wall state. If not checked we would go beyond the bounds of grid world and hence reward matrix
+   would not give correct value
+   
+==================================================================================================================
+
+q_learning_v5_Working-Copy4.ipynb [code ended: 9/18/2016]
+---------------------------------
+
+1. Same code as copy3 except got rid of the wallstates for an open grid.
+2. used this to generate set2 important files.
+    
+==================================================================================================================
+
+foreign_agent_v1.ipynb
+----------------------
+DO NOT CHANGE!!!
+
+1. This is the backbone for the adversarial agent (police) following my car
+2. Thinking of having no walls for the grid this is going to travel (just run q_learning_v5_Working-Copy1.ipynb
+3. Thinking of controlling the police by external user
+4. Thinking of having the program control the police.
+
+==================================================================================================================
+
+obstacle_course_v1.ipynb
+----------------------
+
+==================================================================================================================
+
+foreign_agent_v2.ipynb
+----------------------
+
+1. This is a working case where we have put in course in 7.7 grid without any walls
+2. breadcrumb trail seems to show that police make car deviate from trail
+
+==================================================================================================================
+
+metis_final_project_game_v5.py
+----------------------
+DO NOT CHANGE!!!
+
+1. This version of game works with training done for 7 by 7 grid.
+2. wall states are randomized.
+3. pkl files used are stated in 'important files' section below set1
+
+==================================================================================================================
+
+metis_final_project_game_v6_car_train_2.py
+----------------------
+DO NOT CHANGE!!!
+
+1. This one is showing the training that is done with the car
+
+==================================================================================================================
+
+metis_final_project_game_v7.py
+------------------------------
+
+Note: DO NOT CHANGE!!!!
+
+- what program does:
+(1) [done] remove all mention of wall states [this is done on previously trained car without walls]
+(2) [done] incorporate police car into model [GTA car reacts to police]
+
+- further improvements:
+(a) make both police and GTA car go smoother
+(b) put breadcrumb to show previous GTA track
+(c) incorporate angle transitions
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Important files
+---------------
+
+1) set1: this is the one with (7,7) grid with original walls. Good for showing training and run avoiding obstacles.
+         These files we originally made 'q_learning_v5_Working-Copy1.ipynb'
+    a. qMatrix_7by7_ver2.pkl
+    b. posNegWallState_7by7_ver2
+    
+2) set2: this is one where we do not have any walls. Files made from 'q_learning_v5_Working-Copy4.ipynb'
+    a. qMatrix_7by7_no_walls.pkl
+    
+3) set3: manhattan style roads with 8*8 grid made from 'q_learning_v5_Working-Copy3.ipynb'
+    a. qMatrix_8by8_ver1_manhattan.pkl
+    b. posNegWallState_8by8_ver1_manhattan.pkl
+    
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Important programs [DO NOT CHANGE ANY OF THESE]
+------------------
+
+(A) Avoiding obstacles
+    (a) foreign_agent_v2.ipynb
+    (b) metis_final_project_game_v7.py
+    
+(B) After training:
+    (a) obstacle_course_v1.ipynb
+    (b) metis_final_project_game_v5.py
+    
+(C) Showing training:
+    (a) q_learning_v5_Working-Copy3.ipynb
+    (b) metis_final_project_game_v6_car_train_2.py
+    
+(D) 9 by 9 grid:
+    (a) qMatrix_9by9_manhattan_blocks.pkl: done by q_learning_v5_Workding-Copy4.ipynb
+    (b) posNegWallState_9by9_manhattan_blocks.pkl: same notebook as above
+
+
